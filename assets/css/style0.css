@@ -1,0 +1,16 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    height: auto;
+}
+
+table {
+    text-align: center;
+    margin: auto;
+}
