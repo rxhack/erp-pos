@@ -93,9 +93,9 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-xl-3"><input type="text"name="cname"placeholder="enter company name" value="<?php echo $cname; ?>" class="form-control" required ></div>
-                    <div class="col-xl-3"><input type="text"name="cid"placeholder="enter company ID" value="<?php echo $cid; ?>" class="form-control" required ></div>
-                    <div class="col-xl-3"><input type="text"name="cgst"placeholder="enter company GST no" value="<?php echo $cgst; ?>" class="form-control" required ></div>
+                    <div class="col-xl-3"><input type="text"name="cname"placeholder="enter company name" value="<?php echo $cname; ?>" class="form-control" required /></div>
+                    <div class="col-xl-3"><input type="text"name="cid"placeholder="enter company ID" value="<?php echo $cid; ?>" class="form-control" required /></div>
+                    <div class="col-xl-3"><input type="text"name="cgst"placeholder="enter company GST no" value="<?php echo $cgst; ?>" class="form-control" required /></div>
                     <div class="col-xl-3"><input class="form-control" type="text" placeholder="Phone Number"></div>
                 </div>
                 <div class="form-row">
@@ -113,10 +113,10 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-xl-3"><input type="text"name="pname"placeholder="enter product name" class="form-control" required></div>
-                    <div class="col-xl-3"><input type="text"name="pcolor"placeholder="enter product color" class="form-control" required></div>
-                    <div class="col-xl-3"><input type="text"name="ptype"placeholder="enter product type" class="form-control" required><</div>
-                    <div class="col-xl-3"><input type="text"name="pfor"placeholder="enter product for" class="form-control" required></div>
+                    <div class="col-xl-3"><input type="text"name="pname"placeholder="enter product name" class="form-control" required /></div>
+                    <div class="col-xl-3"><input type="text"name="pcolor"placeholder="enter product color" class="form-control" required /></div>
+                    <div class="col-xl-3"><input type="text"name="ptype"placeholder="enter product type" class="form-control" required /></div>
+                    <div class="col-xl-3"><input type="text"name="pfor"placeholder="enter product for" class="form-control" required /></div>
                 </div>
                 <div class="form-row">
                     <div class="col-xl-3"><input class="form-control" type="text" placeholder="Pattern"></div>
