@@ -28,7 +28,7 @@
     }
 
     if (isset($_POST['save'])) {
-        if (isset($_SESSION['cid'])) {
+        if (!isset($_SESSION['cid'])) {
             $r = $company->add($_POST);
         }
         $r = $product->add($_POST);
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-xl-3"><input type="text"name="cname"placeholder="enter company name" value="<?php echo $cname; ?>" class="form-control" required /                           ></div>
+                    <div class="col-xl-3"><input type="text"name="cname"placeholder="enter company name" value="<?php echo $cname; ?>" class="form-control" required /></div>
                     <div class="col-xl-3"><input type="text"name="cid"placeholder="enter company ID" value="<?php echo $cid; ?>" class="form-control" required /></div>
                     <div class="col-xl-3"><input type="text"name="cgst"placeholder="enter company GST no" value="<?php echo $cgst; ?>" class="form-control" required /></div>
                     <div class="col-xl-3"><input class="form-control" type="text" placeholder="Phone Number"></div>
