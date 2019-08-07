@@ -8,10 +8,6 @@
 
     $user = new User();
 
-    if (isset($_POST['signup'])) {
-        $r = $user->registration($_POST);
-    }
-
     if (isset($_POST['signin'])) {
         $r = $user->login($_POST);
         if ($r['pass']) {
@@ -19,70 +15,61 @@
             header('location: ./user.php');
         }
     }
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <title>login</title>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login - Brand</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
 </head>
-<body>
-    <header>
-        <h1>LOGO</h1>
-        <div class="nav">
-            <a href="#">CONTACT</a>
-            <a href="#">ABOUT US</a>
-            <a href="index.php">LOGIN</a>
-        </div>
-    </header>
-    <div class="container">
-        <form method="post" class="registration">
-            <h1>SIGN-UP</h1>
-            <div>
-                <?php
-                    if (isset($r) && isset($_POST['signup'])) {
-                        if (is_array($r['msg'])) {
-                            foreach ($r['msg'] as $msg) {
-                                echo '<p style="color:orange;font-family:Calibri;">'.$msg.'</p>';
-                            }
-                        } else {
-                            echo '<p style="color:orange;font-family:Calibri;">'.$r['msg'].'</p>';
-                        }
-                    }
-                ?>
-            </div>
-        <input type="text"placeholder="enter name" name="username" class="ibox" required><br>
-        <input type="tel" placeholder="enter phone number" name="pnumber" class="ibox"required><br>
-        <input type="number" placeholder="enter unique id" name="uid" class="ibox"required><br>
-        <input type="number" placeholder="confirm unique id" name="cuid" class="ibox"required><br>
-        <input type="submit"value="sign up" name="signup" class="btn">
-    </form>
-        <form method="post"class="login">
-            <h1>SIGN-IN</h1>
-            <div>
-                <?php
-                    if (isset($r) && isset($_POST['signin'])) {
-                        if (is_array($r['msg'])) {
-                            foreach ($r['msg'] as $msg) {
-                                echo '<p style="color:orange;font-family:Calibri;">'.$msg.'</p>';
-                            }
-                        } else {
-                            echo '<p style="color:orange;font-family:Calibri;">'.$r['msg'].'</p>';
-                        }
-                    }
-                ?>
-            </div>
-        <input type="tel" placeholder="enter phone number" name="pnumber" class="ibox"required><br>
-        <input type="number" placeholder="enter unique id" name="uid" class="ibox"required><br>
-        <input type="submit"value="sign in" name="signin" class="btn">
-    </form>
-    </div>
 
+<body class="bg-gradient-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-12 col-xl-10">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-flex">
+                                <div class="flex-grow-1 bg-login-image" style="background-image: url(&quot;../assets/img/success-background-12.jpg&quot;);"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-4">Welcome Back!</h4>
+                                    </div>
+                                    <form class="user" method="POST">
+                                        <div class="form-group"><input class="form-control form-control-user" type="text"  name="pnumber" placeholder="User ID"></div>
+                                        <div class="form-group"><input class="form-control form-control-user" type="password" name="uid" id="exampleInputPassword" placeholder="Password" name="password"></div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
+                                            </div>
+                                        </div><button class="btn btn-primary btn-block text-white btn-user" name="signin" type="submit"><strong>Login</strong></button>
+                                        <hr>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/script.min.js"></script>
 </body>
+
 </html>
