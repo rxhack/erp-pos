@@ -221,6 +221,31 @@
         }
 
         ## Search
+        # Search All Products
+        public function allProducts()  {
+            // Sql Commands
+            $sql0 = 'SELECT * FROM finaldata';
+
+            try {
+                $conn = $this->database->connect();
+ 
+                // Checking For Users Existence
+                $stmt = $conn->prepare($sql0);
+                if ($stmt->execute()) {} else {
+                    return  array('pass' => false, 'msg' => $stmt->error);
+                }
+                if ($stmt->rowCount() == 0) {
+                    return  array('pass' => true, 'products' => null);
+                }
+                
+                return array('pass' => true, 'products' => $stmt->fetchAll(PDO::FETCH_ASSOC));
+            }
+            catch(PDOException $e) {
+                $this->rMessage = array('pass' => false, 'msg' => $e->getMessage());
+                return $this->rMessage;
+            }
+        }
+
         # Search Products by Company ID
         public function searchByCID($cid)  {
             // Clean Data
@@ -254,9 +279,10 @@
         public function searchByCname($cname)  {
             // Clean Data
             $cname = htmlspecialchars(strip_tags($cname));
+            $cname = '%'.$cname.'%';
 
             // Sql Commands
-            $sql0 = 'SELECT cid FROM companydb WHERE cname = :cname';
+            $sql0 = 'SELECT cid FROM companydb WHERE cname LIKE :cname';
             $sql1 = 'SELECT * FROM finaldata WHERE cid = :cid';
 
             try {
@@ -274,8 +300,9 @@
                         if ($stmt->execute()) {} else {
                             return  array('pass' => false, 'msg' => $stmt->error);
                         }
-                        array_merge($plist, $stmt->fetchAll(PDO::FETCH_ASSOC));
+                        array_push($plist, $stmt->fetchAll(PDO::FETCH_ASSOC));
                     }
+                    
                 } else {
                     return  array('pass' => false, 'msg' => $stmt->error);
                 }
@@ -284,7 +311,7 @@
                     return array('pass' => true, 'products' => null);
                 }
                 
-                return array('pass' => true, 'products' => $plist);
+                return array('pass' => true, 'products' => $plist[0]);
             }
             catch(PDOException $e) {
                 $this->rMessage = array('pass' => false, 'msg' => $e->getMessage());
@@ -313,7 +340,7 @@
                     return  array('pass' => true, 'products' => null);
                 }
                 
-                return array('pass' => true, 'products' => $stmt->fetch(PDO::FETCH_ASSOC));
+                return array('pass' => true, 'products' => $stmt->fetchAll(PDO::FETCH_ASSOC));
             }
             catch(PDOException $e) {
                 $this->rMessage = array('pass' => false, 'msg' => $e->getMessage());
@@ -325,9 +352,10 @@
         public function searchByPname($pname)  {
             // Clean Data
             $this->pname = htmlspecialchars(strip_tags($pname));
+            $this->pname = '%'.$this->pname.'%';
 
             // Sql Commands
-            $sql0 = 'SELECT * FROM finaldata WHERE pname LIKE %:pname%';
+            $sql0 = 'SELECT * FROM finaldata WHERE pname LIKE :pname';
 
             try {
                 $conn = $this->database->connect();

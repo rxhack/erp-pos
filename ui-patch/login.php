@@ -1,22 +1,3 @@
-<?php
-    session_start();
-    if(isset($_SESSION['user'])) {
-        header('location: ./user.php');
-    }
-
-    include_once '../models/User.php';
-
-    $user = new User();
-
-    if (isset($_POST['signin'])) {
-        $r = $user->login($_POST);
-        if ($r['pass']) {
-            $_SESSION['user']=$_POST['pnumber'];
-            header('location: ./user.php');
-        }
-    }
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Login - Brand</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -41,21 +22,21 @@
                     <div class="card-body p-0">
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-flex">
-                                <div class="flex-grow-1 bg-login-image" style="background-image: url(&quot;../assets/img/success-background-12.jpg&quot;);"></div>
+                                <div class="flex-grow-1 bg-login-image" style="background-image: url(&quot;assets/img/success-background-12.jpg&quot;);"></div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">Welcome Back!</h4>
                                     </div>
-                                    <form class="user" method="POST">
-                                        <div class="form-group"><input class="form-control form-control-user" type="text"  name="pnumber" placeholder="User ID"></div>
-                                        <div class="form-group"><input class="form-control form-control-user" type="password" name="uid" id="exampleInputPassword" placeholder="Password" name="password"></div>
+                                    <form class="user">
+                                        <div class="form-group"><input class="form-control form-control-user" type="text" placeholder="User ID"></div>
+                                        <div class="form-group"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
                                             </div>
-                                        </div><button class="btn btn-primary btn-block text-white btn-user" name="signin" type="submit"><strong>Login</strong></button>
+                                        </div><button class="btn btn-primary btn-block text-white btn-user" type="submit"><strong>Login</strong></button>
                                         <hr>
                                     </form>
                                 </div>
